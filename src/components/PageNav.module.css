@@ -1,0 +1,11 @@
+.nav a:global(.active) {
+  background-color: #213555;
+  color: white;
+}
+
+.nav ul {
+  list-style: none;
+  /* display: flex;
+  align-items: center;
+  gap: 4rem; */
+}
