@@ -1,12 +1,22 @@
+/* eslint-disable react/prop-types */
 import Loader from "./Loader";
 import News from "./News";
 
 function NewsContainer({ isLoading, newsData }) {
+
+  console.log(isLoading)
+
   return (
-    <div className="flex justify-center itemds-center g w-[90%s ] p-4  bg-[#F1EFEF] ">
-      {isLoading && <Loader />}
-      <div className=" grid gap-9 grid-cols-1 md:grid-cols-2 pt-[30px]">
-        {newsData?.map((movies) => (
+    <div className="w-[90%] max-w-[1024px] mx-auto p-4 bg-[#F1EFEF] ">
+      {
+        isLoading && (
+          <div className="flex justify-center items-center">
+            <Loader />
+          </div>
+        )
+      }
+      <div className="grid gap-9 md:grid-cols-2 pt-[30px]">
+        {newsData.map((movies) => (
           <News movies={movies} key={movies.id} />
         ))}
       </div>
