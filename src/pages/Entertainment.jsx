@@ -3,15 +3,13 @@ import NewsContainer from "../components/NewsContainer";
 
 function Entertainment() {
   const [newsData, setNewsData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(function () {
-    const controller = new AbortController();
     async function fetchNews() {
       try {
-        setIsLoading(true);
         const res = await fetch(
           "https://api.spaceflightnewsapi.net/v4/articles/?limit=10&offset=40",
-          { signal: controller.signal }
         );
 
         if (!res.ok) throw new Error("Something went wrong with loading news");
@@ -26,10 +24,8 @@ function Entertainment() {
     }
     fetchNews();
 
-    return function () {
-      controller.abort();
-    };
   }, []);
+
   return <NewsContainer isLoading={isLoading} newsData={newsData} />;
 }
 
